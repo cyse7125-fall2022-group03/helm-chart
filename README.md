@@ -2,3 +2,4 @@
 
 helm lint .
 
+added symantic release
