@@ -1,0 +1,17 @@
+node 
+{
+
+    stage('Clone repository') {
+        git branch: 'main', credentialsId: 'f0006ab8-a9be-4bc8-8352-943450dc63f7', url: 'https://github.com/cyse7125-fall2022-group03/helm-chart.git'
+    }
+    
+    stage('release')
+    {
+        step {
+            sh '''
+                npx semantic-release
+            '''
+        }
+        
+    }
+}
