@@ -1,0 +1,10 @@
+# Configuration for RDS
+---
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: {{ .Release.Name }}-{{ .Values.configmap.name }}
+data:
+  DB_DATABASE: {{ .Values.configmap.dbName }}
+  DB_HOST: {{ .Values.configmap.dbHost | quote }}
+  DB_PORT: {{ .Values.configmap.dbPort | quote }}

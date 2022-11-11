@@ -1,0 +1,78 @@
+
+#Deployment with containers    
+---
+apiVersion: apps/v1
+kind: Deployment 
+metadata:
+  name: team3-csye7125
+spec:
+  selector:
+    matchLabels:
+      app: {{ .Release.Name }}-{{ .Values.app.name }}
+  replicas: {{ .Values.replicaCount }} 
+  progressDeadlineSeconds: 300
+  minReadySeconds: 5
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: {{ .Release.Name }}-{{ .Values.app.name }}
+        #label: test-01 #to test rolling update
+    spec:
+      imagePullSecrets:
+      - name: {{ .Release.Name }}-{{ .Values.secret.regcred.name }}
+      #init container for flyway
+      initContainers:
+        - name: schema-migration
+          image: "{{ .Values.image.repository }}:{{ .Values.image.schemaMigrationTag }}"
+          env:
+          - name: FLYWAY_URL
+            value: {{ .Values.flyway.url | quote }}
+          - name: FLYWAY_USER
+            valueFrom: 
+              secretKeyRef:
+                name: {{ .Release.Name }}-{{ .Values.secret.dbcred.name }}
+                key: DB_USERNAME
+          - name: FLYWAY_PASSWORD
+            valueFrom: 
+              secretKeyRef:
+                name: {{ .Release.Name }}-{{ .Values.secret.dbcred.name }}
+                key: DB_PASSWORD 
+          command: ["flyway", "migrate"]
+      #container with web application          
+      containers:
+        - name: team3-csye7125
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          env:
+          - name: DB_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: {{ .Release.Name }}-{{ .Values.secret.dbcred.name }}
+                key: DB_PASSWORD
+          - name: DB_USERNAME
+            valueFrom:
+              secretKeyRef:
+                name: {{ .Release.Name }}-{{ .Values.secret.dbcred.name }}
+                key: DB_USERNAME              
+          envFrom:
+              - configMapRef:
+                  name: {{ .Release.Name }}-{{ .Values.configmap.name }}            
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - containerPort: 8080 
+          readinessProbe:
+            httpGet:
+              path: /healthz
+              port: 8080
+            initialDelaySeconds: 60
+            periodSeconds: 40
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: 8080
+            initialDelaySeconds: 60
+            periodSeconds: 20        
