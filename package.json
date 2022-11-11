@@ -1,0 +1,21 @@
+{
+  "name": "helm-chart",
+  "version": "1.0.0",
+  "description": "helm lint .",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "release": { "branches": [ "main" ,"A05"] },
+
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SandeepWaghNU/helm-chart.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SandeepWaghNU/helm-chart/issues"
+  },
+  "homepage": "https://github.com/SandeepWaghNU/helm-chart#readme"
+}
