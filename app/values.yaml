@@ -1,0 +1,87 @@
+# Default values for app.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 1
+
+image:
+  repository: csye7125fall2022group03/dockrepo
+  pullPolicy: IfNotPresent
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: myfirsttodowebapp15
+  schemaMigrationTag: dbmigrationimage18
+
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+
+podAnnotations: {}
+
+podSecurityContext: {}
+  # fsGroup: 2000
+
+securityContext: {}
+  # capabilities:
+  #   drop:
+  #   - ALL
+  # readOnlyRootFilesystem: true
+  # runAsNonRoot: true
+  # runAsUser: 1000
+
+app:
+  name: webApp
+
+flyway:
+  url: "jdbc:mysql://terraform-20221111022644062800000001.ckxaha0ycc78.us-east-1.rds.amazonaws.com:3306/todo"  
+
+service:
+  name: csye7125
+  type: LoadBalancer
+  port: 8080
+
+
+configmap:
+  name: configmap
+  dbName: todo
+  dbHost: "terraform-20221111022644062800000001.ckxaha0ycc78.us-east-1.rds.amazonaws.com"
+  dbPort: "3306"
+
+
+secret:
+  regcred:
+    name: regcred
+    type: kubernetes.io/dockerconfigjson
+    dockerconfigjson: eyJhdXRocyI6eyJodHRwczovL2luZGV4LmRvY2tlci5pby92MS8iOnsidXNlcm5hbWUiOiJrdWxla2V0a2kiLCJwYXNzd29yZCI6InZhblNoaUAyNjE1IiwiZW1haWwiOiJrdWxlLmtAbm9ydGhlYXN0ZXJuLmVkdSIsImF1dGgiOiJhM1ZzWld0bGRHdHBPblpoYmxOb2FVQXlOakUxIn19fQ==
+  dbcred:
+    name: dbcred
+    dbUserName: cm9vdA==
+    dbPassword: cm9vdDEyMzQ1
+
+
+
+resources: {}
+  # We usually recommend not to specify default resources and to leave this as a conscious
+  # choice for the user. This also increases chances charts run on environments with little
+  # resources, such as Minikube. If you do want to specify resources, uncomment the following
+  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+  # limits:
+  #   cpu: 100m
+  #   memory: 128Mi
+  # requests:
+  #   cpu: 100m
+  #   memory: 128Mi
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80
+  # targetMemoryUtilizationPercentage: 80
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
