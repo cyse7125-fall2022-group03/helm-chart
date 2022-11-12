@@ -1,55 +1,25 @@
 {
-
     "branches": ["main"],
-    "dryRun": false,
-
     "plugins": [
         "@semantic-release/commit-analyzer",
         "@semantic-release/release-notes-generator",
         [
             "semantic-release-helm",
             {
-                "chartPath" :"./"
+                "chartPath": "./app"
             }
         ],
         [
-            "@semantic-release/exec",
+            "@semantic-release/changelog",
             {
-                "publishCmd": "ls"
-            }
-        ],
-        [
-            "@semantic-release/git",
-            {
-                "assets": [
-                    "Chart.yml"
-                ]
-            }
-        ],
-        [
-            "@semantic-release/github",
-            {
-                "assets": [
-                    "Chart.yml"
-                ]
+                "changelogFile": "CHANGELOG.md",
+                "changelogTitle": "# Semantic Versioning Changelog"
             }
         ],
         [
             "@semantic-release/git",
             {
-                "assets": [
-                    "CHANGELOG.md"
-                ]
-            }
-        ],
-        [
-            "@semantic-release/github",
-            {
-                "assets": [
-                    {
-                        "path": "dist/**"
-                    }
-                ]
+                "assets": ["CHANGELOG.md"]
             }
         ]
     ]
