@@ -1,19 +1,36 @@
 {
+
     "branches": ["main"],
+
     "plugins": [
         "@semantic-release/commit-analyzer",
         "@semantic-release/release-notes-generator",
         [
-            "@semantic-release/changelog",
+            "semantic-release-helm",
             {
-                "changelogFile": "CHANGELOG.md",
-                "changelogTitle": "# Semantic Versioning Changelog"
+                "chartPath" :"./"
             }
         ],
         [
             "@semantic-release/exec",
             {
-                "prepareCmd": "ls"
+                "publishCmd": "ls"
+            }
+        ],
+        [
+            "@semantic-release/git",
+            {
+                "assets": [
+                    "Chart.yml"
+                ]
+            }
+        ],
+        [
+            "@semantic-release/github",
+            {
+                "assets": [
+                    "Chart.yml"
+                ]
             }
         ],
         [
