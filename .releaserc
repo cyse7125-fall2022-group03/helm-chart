@@ -27,7 +27,7 @@
             "@semantic-release/github",
             {
                 "assets": [
-                    "Chart.yml"
+                    "./app/Chart.yaml"
                 ]
             }
         ]
