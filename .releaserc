@@ -4,16 +4,33 @@
         "@semantic-release/commit-analyzer",
         "@semantic-release/release-notes-generator",
         [
-            "@semantic-release/changelog",
+            "semantic-release-helm",
             {
-                "changelogFile": "CHANGELOG.md",
-                "changelogTitle": "# Semantic Versioning Changelog"
+                "chartPath" :"./"
             }
         ],
         [
             "@semantic-release/exec",
             {
-                "prepareCmd": "ls"
+                "prepareCmd": "./prepare-release.sh ${nextRelease.version}"
+            }
+        ],
+        [
+            "@semantic-release/git",
+            {
+                "assets": [
+                    "CHANGELOG.md"
+                ]
+            }
+        ],
+        [
+            "@semantic-release/github",
+            {
+                "assets": [
+                    {
+                        "path": "dist/**"
+                    }
+                ]
             }
         ]
     ]
