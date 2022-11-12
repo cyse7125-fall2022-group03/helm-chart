@@ -1,5 +1,5 @@
 {
-    "branch": ["main"],
+    "branches": ["main" ,  "next"],
     "plugins": [
         "@semantic-release/commit-analyzer",
         "@semantic-release/release-notes-generator",
@@ -12,14 +12,14 @@
         [
             "@semantic-release/exec",
             {
-                "publishCmd": "ls"
+                "prepareCmd": "./prepare-release.sh ${nextRelease.version}"
             }
         ],
         [
             "@semantic-release/git",
             {
                 "assets": [
-                    "Chart.yml"
+                    "CHANGELOG.md"
                 ]
             }
         ],
@@ -27,7 +27,9 @@
             "@semantic-release/github",
             {
                 "assets": [
-                    "Chart.yml"
+                    {
+                        "path": "dist/**"
+                    }
                 ]
             }
         ]
