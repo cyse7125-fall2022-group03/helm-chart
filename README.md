@@ -1,28 +1,27 @@
 # helm-chart
 
-helm lint .
+| Name                | NUID      | Email                          |
+| ------------------- | --------- | ------------------------------ |
+| Ketki Kule          | 001549838 | kule.k@northeastern.edu        |
+| Sandeep Wagh        | 001839964 | wagh.sn@northeastern.edu       |
+| Vignesh Gunasekaran | 001029530 | gunasekaran.v@northeastern.edu |
 
-added symantic release
-
+## Validate helm chart
+cd app
 
 ```
-node
-{
+helm lint . 
+```
 
-    stage('Clone repository') {
-        git branch: 'main', credentialsId: 'jenkins-key-1', url: 'https://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@github.com/cyse7125-fall2022-group03/helm-chart.git'
-    }
-    
-    
+```
+helm template .
+```
 
-    stage('release')
-    {
-        sh "npm install @semantic-release/git -D"
-        sh "npm install semantic-release-helm -D"
-        sh "npm install @semantic-release/exec -D"
-        sh  "npm install semantic-release-yaml -D"
-        sh  "npx semantic-release"
-        
-    } 
-}
+Install helm chart 
+
+move outside the helm chart directory 
+ cd ../
+
+```
+helm install v1-app app
 ```
