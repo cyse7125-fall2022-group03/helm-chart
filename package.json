@@ -6,16 +6,16 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "release": { "branches": [ "main" ,"A05"] },
+  "release": { "branches": [ "main" ] },
 
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/SandeepWaghNU/helm-chart.git"
+    "url": "git+https://github.com/cyse7125-fall2022-group03/helm-chart.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/SandeepWaghNU/helm-chart/issues"
+    "url": "https://github.com/cyse7125-fall2022-group03/helm-chart.git/issues"
   },
-  "homepage": "https://github.com/SandeepWaghNU/helm-chart#readme"
+  "homepage": "https://github.com/cyse7125-fall2022-group03/helm-chart.git#readme"
 }
