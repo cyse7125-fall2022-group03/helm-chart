@@ -22,6 +22,21 @@
                    {"path": "./app/Chart.yaml"}
                 ]
             }
+        ],
+        [
+            "@semantic-release/github",
+            {
+                "assets": [
+                    {"path": "Chart.yaml"}
+                ]
+            }
+        ],
+        [
+            "semantic-release-helm",
+            {
+               
+                "chartPath": "./app"
+            }
         ]
     ]
 }
