@@ -25,3 +25,16 @@ move outside the helm chart directory
 ```
 helm install v1-app app
 ```
+
+
+## File Structure
+
+### Jenkinsfile 
+
+Contains the git repo info 
+
+### releaserc 
+
+Used for semantic versioning
+
+
