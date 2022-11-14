@@ -2,7 +2,7 @@ node
 {
 
     stage('Clone repository') {
-        git branch: 'main', credentialsId: 'jenkins-key-1', url: 'https://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@github.com/cyse7125-fall2022-group03/helm-chart.git'
+        git branch: 'main', credentialsId: '${env.JENKINS_CRED_ID}', url: 'https://${env.TOKEN_GITHUB}@github.com/cyse7125-fall2022-group03/helm-chart.git'
     }
     
     
