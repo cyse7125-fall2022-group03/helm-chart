@@ -37,4 +37,8 @@ Contains the git repo info
 
 Used for semantic versioning
 
+### app
+
+Contains helm chart
+
 
