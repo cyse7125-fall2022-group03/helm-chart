@@ -34,6 +34,11 @@ configmap:
   dbName: todo
   dbHost: "terraform-20221111022644062800000001.ckxaha0ycc78.us-east-1.rds.amazonaws.com"
   dbPort: "3306"
+  kafkaIp: "infra-kafka"
+  kafkaPort: "9092" 
+  elasticHost: "elasticsearch-master" 
+  elasticPort: "9200" 
+  kafkaTopic: "topic01-team3"
 
 
 secret:

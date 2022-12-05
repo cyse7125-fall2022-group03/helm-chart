@@ -5,6 +5,13 @@ apiVersion: apps/v1
 kind: Deployment 
 metadata:
   name: team3-csye7125
+  annotations:
+    prometheus.io/scrape: "true"
+    prometheus.io/port: "8080"
+    prometheus.io/path: "/actuator/prometheus"
+    prometheus.io/scrape: 'true'
+    prometheus.io/port: '9404' 
+  
 spec:
   selector:
     matchLabels:
