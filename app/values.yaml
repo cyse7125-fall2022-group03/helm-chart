@@ -16,23 +16,30 @@ imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
 
-
+template:
+  metadata:
+    labels:
+      app: hello
+    annotations:
+      prometheus.io/scrape: 'true'
+      prometheus.io/port: '9404'
+      
 app:
   name: webApp
 
 flyway:
-  url: "jdbc:mysql://terraform-20221206033929258000000001.crv2qyiznaaf.us-east-1.rds.amazonaws.com:3306/todo"  
+  url: "jdbc:mysql://terraform-20221206232221937100000001.crv2qyiznaaf.us-east-1.rds.amazonaws.com:3306/todo"  
 
 service:
   name: csye7125
-  type: LoadBalancer
+  #type: LoadBalancer
   port: 8080
 
 
 configmap:
   name: configmap
   dbName: todo
-  dbHost: "terraform-20221206033929258000000001.crv2qyiznaaf.us-east-1.rds.amazonaws.com"
+  dbHost: "terraform-20221206232221937100000001.crv2qyiznaaf.us-east-1.rds.amazonaws.com"
   dbPort: "3306"
   kafkaIp: "infra-kafka"
   kafkaPort: "9092" 
@@ -66,11 +73,11 @@ resources: {}
   #   memory: 128Mi
 
 autoscaling:
-  enabled: false
+  enabled: true
   minReplicas: 1
-  maxReplicas: 100
-  targetCPUUtilizationPercentage: 80
-  # targetMemoryUtilizationPercentage: 80
+  maxReplicas: 3
+  targetCPUUtilizationPercentage: 50
+  # targetMemoryUtilizationPercentage: 40
 
 nodeSelector: {}
 

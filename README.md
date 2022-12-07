@@ -41,9 +41,4 @@ Used for semantic versioning
 
 Contains helm chart
 
-### Postman API Documentation
-
-JSON file attached
-Link to view or download
-https://documenter.getpostman.com/view/18309852/2s8YK9KR11
 

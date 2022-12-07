@@ -4,7 +4,7 @@
 apiVersion: apps/v1
 kind: Deployment 
 metadata:
-  name: team3-csye7125
+  name: {{ .Release.Name }}-{{ .Values.service.name }}
   annotations:
     prometheus.io/scrape: "true"
     prometheus.io/port: "8080"
