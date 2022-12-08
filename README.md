@@ -31,7 +31,7 @@ helm install v1-app app
 
 ### Jenkinsfile 
 
-Contains the git repo info 
+Pulls the latest release
 
 ### releaserc 
 
