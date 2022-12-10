@@ -28,7 +28,7 @@ app:
   name: webApp
 
 flyway:
-  url: "jdbc:mysql://terraform-20221206232221937100000001.crv2qyiznaaf.us-east-1.rds.amazonaws.com:3306/todo"  
+  url: "jdbc:mysql://terraform-20221210072639169500000001.ck8j652xydqj.us-east-1.rds.amazonaws.com:3306/todo"  
 
 service:
   name: csye7125
@@ -39,7 +39,7 @@ service:
 configmap:
   name: configmap
   dbName: todo
-  dbHost: "terraform-20221206232221937100000001.crv2qyiznaaf.us-east-1.rds.amazonaws.com"
+  dbHost: "terraform-20221210072639169500000001.ck8j652xydqj.us-east-1.rds.amazonaws.com"
   dbPort: "3306"
   kafkaIp: "infra-kafka"
   kafkaPort: "9092" 
@@ -76,7 +76,7 @@ autoscaling:
   enabled: true
   minReplicas: 1
   maxReplicas: 3
-  targetCPUUtilizationPercentage: 50
+  targetCPUUtilizationPercentage: 20
   # targetMemoryUtilizationPercentage: 40
 
 nodeSelector: {}
