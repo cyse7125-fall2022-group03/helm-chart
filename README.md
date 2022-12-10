@@ -6,6 +6,12 @@
 | Sandeep Wagh        | 001839964 | wagh.sn@northeastern.edu       |
 | Vignesh Gunasekaran | 001029530 | gunasekaran.v@northeastern.edu |
 
+
+Final documentation of API call 
+```
+https://documenter.getpostman.com/view/18309852/2s8YK9KR11
+```
+
 ## Validate helm chart
 cd app
 
