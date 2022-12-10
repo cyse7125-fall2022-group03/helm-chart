@@ -28,7 +28,7 @@ metadata:
   name: appinfo
 spec:
   hosts:
-  - "*"
+  - "*" 
   gateways:
   - istio-telemetry-gateway
   http:
